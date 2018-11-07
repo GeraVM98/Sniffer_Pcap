@@ -1,0 +1,28 @@
+Protocol :  Tcp  
+ SourcePort :  7972
+ DestinationPort :  443
+ SequenceNumber :  2889885060
+ NextSequenceNuber :  2889886472
+ AcknowladgmentNumber :  237267907
+ --------------------------------------------- 
+Protocol :  Tcp  
+ SourcePort :  7972
+ DestinationPort :  443
+ SequenceNumber :  2889885060
+ NextSequenceNuber :  2889886472
+ AcknowladgmentNumber :  237267907
+ --------------------------------------------- 
+Protocol :  Tcp  
+ SourcePort :  443
+ DestinationPort :  7797
+ SequenceNumber :  2594304473
+ NextSequenceNuber :  2594304473
+ AcknowladgmentNumber :  1907835546
+ --------------------------------------------- 
+Protocol :  Tcp  
+ SourcePort :  443
+ DestinationPort :  7797
+ SequenceNumber :  2594304473
+ NextSequenceNuber :  2594304473
+ AcknowladgmentNumber :  1907835546
+ --------------------------------------------- 
