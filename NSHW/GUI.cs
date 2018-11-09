@@ -27,6 +27,7 @@ namespace NSHW
         public static Dictionary<int, Packet1> packets = new Dictionary<int, Packet1>();
         public List<Packet> paquetes = new List<Packet>();
         public Packet paqueter;
+        string fullpath = Path.Combine(Application.StartupPath, @"captured\");
 
 
         public GUI()
@@ -69,7 +70,9 @@ namespace NSHW
   
         private void start_button_Click(object sender, EventArgs e)
         {
-            if(!first_time)//we need to re-capturing so we need to restart the program
+
+
+            if (!first_time)//we need to re-capturing so we need to restart the program
             {
                 Application.Restart();
             }
@@ -290,7 +293,7 @@ namespace NSHW
                                     if (packet1.Data_Length == packet1.Data.Length)
                                     {
 
-                                        using (BinaryWriter writer = new BinaryWriter(File.Open(@"C:\Users\USUARIO\Downloads\SnifferC#\captured\" + Directory.CreateDirectory(Path.GetFileName(packet1.Name)), FileMode.Create)))
+                                        using (BinaryWriter writer = new BinaryWriter(File.Open(fullpath + Directory.CreateDirectory(Path.GetFileName(packet1.Name)), FileMode.Create)))
                                         {
                                             writer.Write(packet1.Data);
 
@@ -322,7 +325,7 @@ namespace NSHW
                     textBox1.Text = "Type: " + type + "\r\nProtocol :  Tcp  \r\n SourcePort :  " + tcpsrc + "\r\n DestinationPort :  " + tcpdes + "\r\n SequenceNumber :  " + tcpsec + "\r\n NextSequenceNuber :  " + tcpnsec + "\r\n AcknowladgmentNumber :  " + tcpack;
                     if (save.Checked)
                     {
-                        using (StreamWriter writer = new StreamWriter(@"C:\Users\USUARIO\Downloads\SnifferC#\captured\TcpPacketsInfo.txt", true))
+                        using (StreamWriter writer = new StreamWriter(fullpath + "TcpPacketsInfo.txt", true))
                         {
                             writer.Write("Protocol :  Tcp  \r\n SourcePort :  " + tcpsrc + "\r\n DestinationPort :  " + tcpdes + "\r\n SequenceNumber :  " + tcpsec + "\r\n NextSequenceNuber :  " + tcpnsec + "\r\n AcknowladgmentNumber :  " + tcpack + "\r\n --------------------------------------------- \r\n");
                         }
@@ -336,7 +339,7 @@ namespace NSHW
                         textBox1.Text = "Protocol :  Http  \r\n Version :  " + httpver + "\r\n Length :  " + httplen + "\r\n Type :  " + reqres + "\r\n Header :  \r\n" + httpheader + "\r\n Body :  \r\n" + httpbody;
                         if (save.Checked)
                         {
-                            using (StreamWriter writer = new StreamWriter(@"C:\Users\USUARIO\Downloads\SnifferC#\captured\HttpPacketsInfo.txt", true))
+                            using (StreamWriter writer = new StreamWriter(fullpath + "HttpPacketsInfo.txt", true))
                             {
                                 writer.Write("Protocol :  Http  \r\n Version :  " + httpver + "\r\n Length :  " + httplen + "\r\n Type :  " + reqres + "\r\n Header :  \r\n" + httpheader + "\r\n --------------------------------------------- \r\n");
                             }
@@ -350,7 +353,7 @@ namespace NSHW
                             textBox1.Text = "Protocol :  Udp  \r\n SourcePort :  " + udpscr + "\r\n DestinationPort :  " + udpdes;
                             if (save.Checked)
                             {
-                                using (StreamWriter writer = new StreamWriter(@"C:\Users\USUARIO\Downloads\SnifferC#\captured\UdpPacketsInfo.txt", true))
+                                using (StreamWriter writer = new StreamWriter(fullpath + "UdpPacketsInfo.txt", true))
                                 {
                                     writer.Write("Protocol :  Udp  \r\n SourcePort :  " + udpscr + "\r\n DestinationPort :  " + udpdes + "\r\n --------------------------------------------- \r\n");
                                 }
@@ -425,7 +428,7 @@ namespace NSHW
             {
                 using (PacketCommunicator communicator = selectedAdapter.Open(65536, PacketDeviceOpenAttributes.Promiscuous, 1000))
                 {
-                    using (PacketDumpFile dumpFile = communicator.OpenDump(@"C:\Users\USUARIO\Downloads\SnifferC#\captured\file.pcap"))
+                    using (PacketDumpFile dumpFile = communicator.OpenDump(fullpath + "file.pcap"))
                     {
                         // start the capture
                         communicator.ReceivePackets(0, dumpFile.Dump);
@@ -438,15 +441,37 @@ namespace NSHW
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                int var2 = listView1.Items.IndexOf(listView1.SelectedItems[0]);
-                Packet paquete = paquetes[var2];
+                int indice = listView1.Items.IndexOf(listView1.SelectedItems[0]);
+                Packet paquete = paquetes[indice];
 
                 EthernetDatagram eth = paquete.Ethernet;
                 IpV4Datagram ip = paquete.Ethernet.IpV4;
                 TcpDatagram tcp = ip.Tcp;
                 UdpDatagram udp = ip.Udp;
 
-                MessageBox.Show(ip.Destination.ToString());
+                treeView1.Nodes.Clear();
+
+                TreeNode node1 = new TreeNode("ETHERNET");
+                node1.ForeColor = Color.Blue;
+
+                node1.Nodes.Add("MAC de Origen: " + eth.Source.ToString().ToUpper());
+                node1.Nodes.Add("MAC de Destino: " + eth.Destination.ToString().ToUpper());
+
+
+                TreeNode node2 = new TreeNode("IP");
+                node2.ForeColor = Color.Green;
+                
+
+                TreeNode node3 = new TreeNode("TCP");
+                node3.ForeColor = Color.Red;
+                
+
+                node1.Nodes.Add(node2);
+                node2.Nodes.Add(node3);
+                treeView1.Nodes.Add(node1);
+
+                treeView1.ExpandAll();
+
             }
         }
     }
