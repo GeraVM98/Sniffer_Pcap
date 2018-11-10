@@ -20,6 +20,7 @@ namespace NSHW
 {
     public partial class GUI : Form
     {
+
         private  IList<LivePacketDevice> AdaptersList;
         private PacketDevice selectedAdapter;
         private bool first_time = true; //boolean variable needed on re-capturing
@@ -33,6 +34,8 @@ namespace NSHW
         public GUI()
         {
             InitializeComponent();
+
+            this.Height = 800;
 
             try
             {
@@ -86,8 +89,8 @@ namespace NSHW
                 start_button.Enabled = false;
                 stop_button.Enabled = true;
                 adapters_list.Enabled = false;
-                _tcp.Enabled = false;
-                _udp.Enabled = false;
+                /*_tcp.Enabled = false;
+                _udp.Enabled = false;*/
                 first_time = false;
                 save.Enabled = false;
             }
@@ -103,10 +106,10 @@ namespace NSHW
             start_button.Enabled = true;
             stop_button.Enabled = false;
             adapters_list.Enabled = true;
-            _tcp.Enabled = true;
-            _udp.Enabled = true;
+            /*_tcp.Enabled = true;
+            _udp.Enabled = true;*/
             timer1.Enabled = false;
-            start_button.Text = "Re-Capturing";
+            start_button.Text = "Recapturar";
             save.Enabled = true;
 
         }
@@ -118,7 +121,7 @@ namespace NSHW
         string destination = "";
         string protocol = "";
         string length = "";
-        string tcpack = "";
+        /*string tcpack = "";
         string tcpsec = "";
         string tcpnsec = "";
         string tcpsrc = "";
@@ -126,24 +129,22 @@ namespace NSHW
         string udpscr = "";
         string udpdes = "";
         string httpheader = "";
-        string httpbody = "";
         string httpver = "";
         string httplen = "";
-        string reqres = "";
+        string reqres = "";*/
         //variables needed when saving files
-        string folderName = "";
+        /*string folderName = "";
         string pathString = "";
-        string type;
+        string type;*/
 
 
         private void PacketHandler(Packet packet)
         {
             this.count = ""; this.time = ""; this.source = ""; this.destination = ""; this.protocol = ""; this.length = "";
 
-            this.tcpack = ""; this.tcpsec = ""; this.tcpnsec = ""; this.tcpsrc = ""; this.tcpdes = ""; this.udpscr = "";
+            /*this.tcpack = ""; this.tcpsec = ""; this.tcpnsec = ""; this.tcpsrc = ""; this.tcpdes = ""; this.udpscr = "";
 
-            this.udpdes = ""; this.httpheader = ""; this.httpver = ""; this.httplen = ""; this.reqres = ""; this.httpbody = "";
-            this.type = "";
+            this.udpdes = ""; this.httpheader = ""; this.httpver = ""; this.httplen = ""; this.reqres = "";*/
 
             paqueter = packet;
 
@@ -157,54 +158,12 @@ namespace NSHW
 
             if (ip.Protocol.ToString().Equals("Tcp"))
             {
-                //httpPacket = tcp.Http;//Initialize http variable only if the packet was tcp
-
-                /*if ((httpPacket.Header != null) && (!_tcp.Checked))
-                {
-                    protocol = "Http";
-                    httpheader = httpPacket.Header.ToString();
-                    count = packet.Count.ToString();
-                    time = packet.Timestamp.ToString();
-                    this.source = ip.Source.ToString();
-                    this.destination = ip.Destination.ToString();
-                    length = ip.Length.ToString();
-                    httpver = httpPacket.Version.ToString();
-                    httplen = httpPacket.Length.ToString();
-                    httpbody = httpPacket.Body.ToString();
-                    
-
-                    
-
-
-                    if (httpPacket.IsRequest)
-                    {
-                        reqres = "Request";
-                    }
-                    else
-                    {
-                        reqres = "Response";
-                    }
-                }
-
-                else
-                {*/
-
                 count = packet.Count.ToString();
-                    time = packet.Timestamp.ToString();
-                    this.source = ip.Source.ToString();
-                    this.destination = ip.Destination.ToString();
-                    length = ip.Length.ToString();
-                    protocol = ip.Protocol.ToString();
-
-                    tcpsrc = tcp.SourcePort.ToString();
-                    tcpdes = tcp.DestinationPort.ToString();
-                    tcpack = tcp.AcknowledgmentNumber.ToString();
-                    tcpsec = tcp.SequenceNumber.ToString();
-                    tcpnsec = tcp.NextSequenceNumber.ToString();
-                    type = eth.EtherType.ToString();
-                //}
-
-
+                time = packet.Timestamp.ToString();
+                this.source = ip.Source.ToString();
+                this.destination = ip.Destination.ToString();
+                length = eth.Length.ToString();
+                protocol = ip.Protocol.ToString();
             }
             else
             {
@@ -214,24 +173,21 @@ namespace NSHW
                     time = packet.Timestamp.ToString();
                     this.source = ip.Source.ToString();
                     this.destination = ip.Destination.ToString();
-                    length = ip.Length.ToString();
+                    length = eth.Length.ToString();
                     protocol = ip.Protocol.ToString();
-                    udpscr = udp.SourcePort.ToString();
-                    udpdes = udp.DestinationPort.ToString();
                 }
                 else
                 {
 
-                    count = packet.Count.ToString();
+                    /*count = packet.Count.ToString();
                     time = packet.Timestamp.ToString();
                     this.source = ip.Source.ToString();
                     this.destination = ip.Destination.ToString();
                     length = ip.Length.ToString();
-                    protocol = ip.Protocol.ToString();
+                    protocol = ip.Protocol.ToString();*/
 
                 }
             }
-            
 
             if (ip.Protocol.ToString().Equals("Tcp")&&(save.Checked))
             {
@@ -320,9 +276,8 @@ namespace NSHW
                 item.SubItems.Add(protocol);
                 paquetes.Insert(0,paqueter);
 
-                if (protocol.Equals("Tcp"))
+                /*if (protocol.Equals("Tcp"))
                 {
-                    textBox1.Text = "Type: " + type + "\r\nProtocol :  Tcp  \r\n SourcePort :  " + tcpsrc + "\r\n DestinationPort :  " + tcpdes + "\r\n SequenceNumber :  " + tcpsec + "\r\n NextSequenceNuber :  " + tcpnsec + "\r\n AcknowladgmentNumber :  " + tcpack;
                     if (save.Checked)
                     {
                         using (StreamWriter writer = new StreamWriter(fullpath + "TcpPacketsInfo.txt", true))
@@ -336,7 +291,6 @@ namespace NSHW
                 {
                     if (protocol.Equals("Http"))
                     {
-                        textBox1.Text = "Protocol :  Http  \r\n Version :  " + httpver + "\r\n Length :  " + httplen + "\r\n Type :  " + reqres + "\r\n Header :  \r\n" + httpheader + "\r\n Body :  \r\n" + httpbody;
                         if (save.Checked)
                         {
                             using (StreamWriter writer = new StreamWriter(fullpath + "HttpPacketsInfo.txt", true))
@@ -350,7 +304,6 @@ namespace NSHW
                         if (protocol.Equals("Udp"))
                         {
 
-                            textBox1.Text = "Protocol :  Udp  \r\n SourcePort :  " + udpscr + "\r\n DestinationPort :  " + udpdes;
                             if (save.Checked)
                             {
                                 using (StreamWriter writer = new StreamWriter(fullpath + "UdpPacketsInfo.txt", true))
@@ -360,7 +313,7 @@ namespace NSHW
                             }
                         }
                     }
-                }
+                }*/
 
                 item.SubItems.Add(length);
                 listView1.Items.Insert(0, item);
@@ -386,36 +339,14 @@ namespace NSHW
                     return;
                 }
 
+                using (BerkeleyPacketFilter filter = communicator.CreateFilter("tcp or udp"))
+                {
+                    // Set the filter
+                    communicator.SetFilter(filter);
+                }
 
-                //Deallocation is  necessary
-                if (_tcp.Checked && (!_udp.Checked))//just tcp
-                {
-                    using (BerkeleyPacketFilter filter = communicator.CreateFilter("tcp"))
-                    {
-                        // Set the filter
-                        communicator.SetFilter(filter);
-                    }
-                }
-                 else if (_udp.Checked && !(_tcp.Checked))//just udp
-                {
-                    using (BerkeleyPacketFilter filter = communicator.CreateFilter("udp"))
-                    {
-                        // Set the filter
-                        communicator.SetFilter(filter);
-                    }
-                }
-                else if (_tcp.Checked && (_udp.Checked))//tcp and udp
-                {
-                    using (BerkeleyPacketFilter filter = communicator.CreateFilter("ip and udp"))
-                    {
-                        // Set the filter
-                        communicator.SetFilter(filter);
-                    }
-                }              
-                
                 // Begin the capture
                 communicator.ReceivePackets(0, PacketHandler);
-
                 
 
             }
@@ -449,6 +380,26 @@ namespace NSHW
                 TcpDatagram tcp = ip.Tcp;
                 UdpDatagram udp = ip.Udp;
 
+                long checksum = Convert.ToInt64(ip.HeaderChecksum);
+
+                string df="", mf="";
+                IpV4Fragmentation flags = ip.Fragmentation;
+                if (flags.Options.ToString().Equals("MoreFragments"))
+                {
+                    df = "0";
+                    mf = "1";
+                }
+                if (flags.Options.ToString().Equals("None"))
+                {
+                    df = "0";
+                    mf = "0";
+                }
+                if (flags.Options.ToString().Equals("DoNotFragment"))
+                {
+                    df = "1";
+                    mf = "0";
+                }
+
                 treeView1.Nodes.Clear();
 
                 TreeNode node1 = new TreeNode("ETHERNET");
@@ -456,20 +407,61 @@ namespace NSHW
 
                 node1.Nodes.Add("MAC de Origen: " + eth.Source.ToString().ToUpper());
                 node1.Nodes.Add("MAC de Destino: " + eth.Destination.ToString().ToUpper());
-
+                node1.Nodes.Add("Tipo de servicio: " + eth.EtherType.ToString().ToUpper());
 
                 TreeNode node2 = new TreeNode("IP");
                 node2.ForeColor = Color.Green;
-                
-
-                TreeNode node3 = new TreeNode("TCP");
-                node3.ForeColor = Color.Red;
-                
+                node2.Nodes.Add("Version: " + ip.Version.ToString());
+                node2.Nodes.Add("Longitud de la cabecera: " + ip.HeaderLength.ToString());
+                node2.Nodes.Add("Tipo de servicio: " + ip.TypeOfService.ToString());
+                node2.Nodes.Add("Longitud total: " + ip.Length.ToString());
+                node2.Nodes.Add("Identificacion: " + ip.Identification.ToString());
+                node2.Nodes.Add("Fragmentado: " + df);
+                node2.Nodes.Add("Mas fragmentos: " + mf);
+                node2.Nodes.Add("Desplazamiento del fragmento: " + flags.Offset.ToString());
+                node2.Nodes.Add("Tiempo de vida: " + ip.Ttl.ToString());
+                node2.Nodes.Add("Protocolo: " + ip.Protocol.ToString());
+                node2.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksum), 16)+ ":  [ " + ip.IsHeaderChecksumCorrect.ToString() + " ] ");
+                node2.Nodes.Add("Ip origen: " + ip.Source.ToString());
+                node2.Nodes.Add("Ip destino: " + ip.Destination.ToString());
 
                 node1.Nodes.Add(node2);
-                node2.Nodes.Add(node3);
-                treeView1.Nodes.Add(node1);
 
+                if (ip.Protocol.ToString().Equals("Tcp"))
+                {
+                    long checksumtcp = Convert.ToInt64(tcp.Checksum);
+
+                    TreeNode node3 = new TreeNode("TCP");
+                    node3.ForeColor = Color.Red;
+                    node3.Nodes.Add("Puerto de Origen: " + tcp.SourcePort.ToString());
+                    node3.Nodes.Add("Puerto de Destino: " + tcp.DestinationPort.ToString());
+                    node3.Nodes.Add("Numero de secuencia: " + tcp.SequenceNumber.ToString());
+                    node3.Nodes.Add("Siguiente numero de secuencia: " + tcp.NextSequenceNumber.ToString());
+                    node3.Nodes.Add("Numero de confirmacion: " + tcp.AcknowledgmentNumber.ToString());
+                    node3.Nodes.Add("Longitud de la cabecera: " + tcp.HeaderLength.ToString());
+
+                    node3.Nodes.Add("Tamaño de ventana: " + tcp.Window.ToString());
+                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumtcp), 16) + ":  [] ");
+                    node3.Nodes.Add("Puntero urgente: " + tcp.UrgentPointer.ToString());
+
+                    node2.Nodes.Add(node3);
+                }
+                
+                if ((ip.Protocol.ToString().Equals("Udp")))
+                {
+                    long checksumudp = Convert.ToInt64(udp.Checksum);
+
+                    TreeNode node3 = new TreeNode("UDP");
+                    node3.ForeColor = Color.Red;
+                    node3.Nodes.Add("Puerto de Origen: " + udp.SourcePort.ToString());
+                    node3.Nodes.Add("Puerto de Destino: " + udp.DestinationPort.ToString());
+                    node3.Nodes.Add("Longitud de la cabecera: " + udp.TotalLength.ToString());
+                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumudp), 16) + ":  [] ");
+
+                    node2.Nodes.Add(node3);
+                }
+
+                treeView1.Nodes.Add(node1);
                 treeView1.ExpandAll();
 
             }

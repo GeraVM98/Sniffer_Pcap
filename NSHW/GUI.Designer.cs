@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
             this.save = new System.Windows.Forms.CheckBox();
-            this._udp = new System.Windows.Forms.CheckBox();
-            this._tcp = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.adapters_label = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -58,7 +54,7 @@
             this.save.BackColor = System.Drawing.Color.Transparent;
             this.save.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.save.Location = new System.Drawing.Point(389, 171);
+            this.save.Location = new System.Drawing.Point(429, 92);
             this.save.Margin = new System.Windows.Forms.Padding(4);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(169, 27);
@@ -66,69 +62,18 @@
             this.save.Text = "Guardar Datos";
             this.save.UseVisualStyleBackColor = false;
             // 
-            // _udp
-            // 
-            this._udp.AutoSize = true;
-            this._udp.BackColor = System.Drawing.Color.Transparent;
-            this._udp.Font = new System.Drawing.Font("Tahoma", 9.5F, System.Drawing.FontStyle.Bold);
-            this._udp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this._udp.Location = new System.Drawing.Point(717, 89);
-            this._udp.Margin = new System.Windows.Forms.Padding(4);
-            this._udp.Name = "_udp";
-            this._udp.Size = new System.Drawing.Size(66, 23);
-            this._udp.TabIndex = 20;
-            this._udp.Text = "UDP";
-            this._udp.UseVisualStyleBackColor = false;
-            // 
-            // _tcp
-            // 
-            this._tcp.AutoSize = true;
-            this._tcp.BackColor = System.Drawing.Color.Transparent;
-            this._tcp.Font = new System.Drawing.Font("Tahoma", 9.5F, System.Drawing.FontStyle.Bold);
-            this._tcp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this._tcp.Location = new System.Drawing.Point(511, 90);
-            this._tcp.Margin = new System.Windows.Forms.Padding(4);
-            this._tcp.Name = "_tcp";
-            this._tcp.Size = new System.Drawing.Size(64, 23);
-            this._tcp.TabIndex = 19;
-            this._tcp.Text = "TCP";
-            this._tcp.UseVisualStyleBackColor = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(55, 90);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 24);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Filtros :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(52, 514);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(660, 206);
-            this.textBox1.TabIndex = 17;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(47, 487);
+            this.label2.Location = new System.Drawing.Point(48, 414);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(293, 24);
+            this.label2.Size = new System.Drawing.Size(274, 24);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Informmacion del Paquete :";
+            this.label2.Text = "Informacion del Paquete :";
             // 
             // adapters_label
             // 
@@ -153,10 +98,10 @@
             this.columnHeader6});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(52, 238);
+            this.listView1.Location = new System.Drawing.Point(51, 140);
             this.listView1.Margin = new System.Windows.Forms.Padding(5);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(976, 217);
+            this.listView1.Size = new System.Drawing.Size(991, 257);
             this.listView1.TabIndex = 14;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -195,10 +140,10 @@
             // 
             this.start_button.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.start_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.start_button.Location = new System.Drawing.Point(52, 171);
+            this.start_button.Location = new System.Drawing.Point(719, 556);
             this.start_button.Margin = new System.Windows.Forms.Padding(5);
             this.start_button.Name = "start_button";
-            this.start_button.Size = new System.Drawing.Size(235, 39);
+            this.start_button.Size = new System.Drawing.Size(253, 39);
             this.start_button.TabIndex = 13;
             this.start_button.Text = "Iniciar";
             this.start_button.UseVisualStyleBackColor = true;
@@ -219,7 +164,7 @@
             this.stop_button.Enabled = false;
             this.stop_button.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.stop_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.stop_button.Location = new System.Drawing.Point(695, 171);
+            this.stop_button.Location = new System.Drawing.Point(719, 737);
             this.stop_button.Margin = new System.Windows.Forms.Padding(4);
             this.stop_button.Name = "stop_button";
             this.stop_button.Size = new System.Drawing.Size(253, 39);
@@ -244,23 +189,19 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(782, 514);
+            this.treeView1.Location = new System.Drawing.Point(52, 451);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(405, 206);
+            this.treeView1.Size = new System.Drawing.Size(523, 454);
             this.treeView1.TabIndex = 24;
             // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 736);
+            this.ClientSize = new System.Drawing.Size(1078, 955);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.stop_button);
             this.Controls.Add(this.save);
-            this.Controls.Add(this._udp);
-            this.Controls.Add(this._tcp);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.adapters_label);
             this.Controls.Add(this.listView1);
@@ -271,7 +212,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sniffer Program";
+            this.Text = "Sniffer";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,10 +221,6 @@
         #endregion
 
         private System.Windows.Forms.CheckBox save;
-        private System.Windows.Forms.CheckBox _udp;
-        private System.Windows.Forms.CheckBox _tcp;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label adapters_label;
         private System.Windows.Forms.ListView listView1;
