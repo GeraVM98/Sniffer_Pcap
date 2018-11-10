@@ -439,7 +439,12 @@ namespace NSHW
                     node3.Nodes.Add("Siguiente numero de secuencia: " + tcp.NextSequenceNumber.ToString());
                     node3.Nodes.Add("Numero de confirmacion: " + tcp.AcknowledgmentNumber.ToString());
                     node3.Nodes.Add("Longitud de la cabecera: " + tcp.HeaderLength.ToString());
-
+                    node3.Nodes.Add("URG: " + tcp.IsUrgent.ToString());
+                    node3.Nodes.Add("ACK: " + tcp.IsAcknowledgment.ToString());
+                    node3.Nodes.Add("PSH: " + tcp.IsPush.ToString());
+                    node3.Nodes.Add("RST: " + tcp.IsReset.ToString());
+                    node3.Nodes.Add("SYN: " + tcp.IsSynchronize.ToString());
+                    node3.Nodes.Add("FIN: " + tcp.IsFin.ToString());
                     node3.Nodes.Add("Tamaño de ventana: " + tcp.Window.ToString());
                     node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumtcp), 16) + ":  [] ");
                     node3.Nodes.Add("Puntero urgente: " + tcp.UrgentPointer.ToString());
