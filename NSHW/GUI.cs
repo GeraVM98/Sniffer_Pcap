@@ -94,7 +94,7 @@ namespace NSHW
             }
             else
             {
-                MessageBox.Show("Seleccionar un adaptador");
+                MessageBox.Show("Seleccionar un adaptador","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -130,6 +130,8 @@ namespace NSHW
             IpV4Datagram ip = packet.Ethernet.IpV4;
             TcpDatagram tcp = ip.Tcp;
             UdpDatagram udp = ip.Udp;
+
+
             HttpDatagram httpPacket=null;
             
 
@@ -322,7 +324,6 @@ namespace NSHW
 
                 TreeNode node1 = new TreeNode("ETHERNET");
                 node1.ForeColor = Color.Blue;
-
                 node1.Nodes.Add("MAC de Origen: " + eth.Source.ToString().ToUpper());
                 node1.Nodes.Add("MAC de Destino: " + eth.Destination.ToString().ToUpper());
                 node1.Nodes.Add("Tipo de servicio: " + eth.EtherType.ToString().ToUpper());
