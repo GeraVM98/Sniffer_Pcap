@@ -333,11 +333,11 @@ namespace NSHW
                 node2.Nodes.Add("Longitud de la cabecera: " + ip.HeaderLength.ToString() + " Bytes");
                 node2.Nodes.Add("Tipo de servicio: " + ip.TypeOfService.ToString());
                 node2.Nodes.Add("Longitud del paquete: " + ip.Length.ToString() + " Bytes");
-                node2.Nodes.Add("Identificacion: " + ip.Identification.ToString());
+                node2.Nodes.Add("Identificacion: " + Convert.ToString(Convert.ToInt64(ip.Identification), 16));
                 node2.Nodes.Add("Fragmentado: " + df);
                 node2.Nodes.Add("Mas fragmentos: " + mf);
                 node2.Nodes.Add("Desplazamiento del fragmento: " + flags.Offset.ToString());
-                node2.Nodes.Add("Tiempo de vida: " + ip.Ttl.ToString());
+                node2.Nodes.Add("Tiempo de vida: " + ip.Ttl.ToString() + " Segundos");
                 node2.Nodes.Add("Protocolo: " + ip.Protocol.ToString());
                 node2.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksum), 16)+ "  [ " + ip.IsHeaderChecksumCorrect.ToString() + " ] ");
                 node2.Nodes.Add("Ip origen: " + ip.Source.ToString());
@@ -348,6 +348,7 @@ namespace NSHW
                 if (ip.Protocol.ToString().Equals("Tcp"))
                 {
                     long checksumtcp = Convert.ToInt64(tcp.Checksum);
+                    int flag;
 
                     TreeNode node3 = new TreeNode("TCP");
                     node3.ForeColor = Color.Red;
@@ -358,17 +359,26 @@ namespace NSHW
                     node3.Nodes.Add("Numero de confirmacion: " + tcp.AcknowledgmentNumber.ToString());
                     node3.Nodes.Add("Longitud de la cabecera: " + tcp.HeaderLength.ToString() + " Bytes");
                     node3.Nodes.Add("000. .... ....  : Reservado");
-                    node3.Nodes.Add("...X .... ....  : NONCE " + tcp.IsNonceSum.ToString());
-                    node3.Nodes.Add(".... X... ....  : CWR " + tcp.IsCongestionWindowReduced.ToString());
-                    node3.Nodes.Add(".... .X.. ....  : ECN " + tcp.IsExplicitCongestionNotificationEcho.ToString());
-                    node3.Nodes.Add(".... ..X. ....  : URG " + tcp.IsUrgent.ToString());
-                    node3.Nodes.Add(".... ...X ....  : ACK " + tcp.IsAcknowledgment.ToString());
-                    node3.Nodes.Add(".... .... X...  : PSH " + tcp.IsPush.ToString());
-                    node3.Nodes.Add(".... .... .X..  : RST " + tcp.IsReset.ToString());
-                    node3.Nodes.Add(".... .... ..X.  : SYN " + tcp.IsSynchronize.ToString());
-                    node3.Nodes.Add(".... .... ...X  : FIN " + tcp.IsFin.ToString());
-                    node3.Nodes.Add("Tamaño de ventana: " + tcp.Window.ToString());
-                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumtcp), 16) + "  [] ");
+                    flag = tcp.IsNonceSum ? 1 : 0;
+                    node3.Nodes.Add("..." + flag.ToString() + " .... ....  : NONCE =" + tcp.IsNonceSum.ToString());
+                    flag = tcp.IsCongestionWindowReduced ? 1 : 0;
+                    node3.Nodes.Add(".... " + flag.ToString() + "... ....  : CWR =" + tcp.IsCongestionWindowReduced.ToString());
+                    flag = tcp.IsExplicitCongestionNotificationEcho ? 1 : 0;
+                    node3.Nodes.Add(".... ." + flag.ToString() + ".. ....  : ECN =" + tcp.IsExplicitCongestionNotificationEcho.ToString());
+                    flag = tcp.IsUrgent ? 1 : 0;
+                    node3.Nodes.Add(".... .." + flag.ToString() + ". ....  : URG =" + tcp.IsUrgent.ToString());
+                    flag = tcp.IsAcknowledgment ? 1 : 0;
+                    node3.Nodes.Add(".... ..." + flag.ToString() + " ....  : ACK =" + tcp.IsAcknowledgment.ToString());
+                    flag = tcp.IsPush ? 1 : 0;
+                    node3.Nodes.Add(".... .... " + flag.ToString() + "...  : PSH =" + tcp.IsPush.ToString());
+                    flag = tcp.IsReset ? 1 : 0;
+                    node3.Nodes.Add(".... .... ." + flag.ToString() + "..  : RST =" + tcp.IsReset.ToString());
+                    flag = tcp.IsSynchronize ? 1 : 0;
+                    node3.Nodes.Add(".... .... .." + flag.ToString() + ".  : SYN =" + tcp.IsSynchronize.ToString());
+                    flag = tcp.IsFin ? 1 : 0;
+                    node3.Nodes.Add(".... .... ..." + flag.ToString() + "  : FIN =" + tcp.IsFin.ToString());
+                    node3.Nodes.Add("Tamaño de ventana: " + tcp.Window.ToString() + " Bytes");
+                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumtcp), 16));
                     node3.Nodes.Add("Puntero urgente: " + tcp.UrgentPointer.ToString());
 
                     node2.Nodes.Add(node3);
@@ -382,8 +392,8 @@ namespace NSHW
                     node3.ForeColor = Color.Red;
                     node3.Nodes.Add("Puerto de Origen: " + udp.SourcePort.ToString());
                     node3.Nodes.Add("Puerto de Destino: " + udp.DestinationPort.ToString());
-                    node3.Nodes.Add("Longitud de la cabecera: " + udp.TotalLength.ToString());
-                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumudp), 16) + "  [] ");
+                    node3.Nodes.Add("Longitud de la cabecera: " + udp.TotalLength.ToString() + " Bytes");
+                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumudp), 16));
 
                     node2.Nodes.Add(node3);
                 }
