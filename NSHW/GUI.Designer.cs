@@ -58,9 +58,10 @@
             this.save.BackColor = System.Drawing.Color.Transparent;
             this.save.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.save.ForeColor = System.Drawing.Color.Black;
-            this.save.Location = new System.Drawing.Point(1007, 19);
+            this.save.Location = new System.Drawing.Point(1343, 23);
+            this.save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(202, 32);
+            this.save.Size = new System.Drawing.Size(252, 41);
             this.save.TabIndex = 22;
             this.save.Text = "Guardar Datos";
             this.save.UseVisualStyleBackColor = false;
@@ -73,10 +74,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 368);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 453);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(240, 23);
+            this.label2.Size = new System.Drawing.Size(302, 28);
             this.label2.TabIndex = 16;
             this.label2.Text = "Información del paquete";
             // 
@@ -86,10 +87,10 @@
             this.adapters_label.BackColor = System.Drawing.Color.Transparent;
             this.adapters_label.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adapters_label.ForeColor = System.Drawing.Color.Black;
-            this.adapters_label.Location = new System.Drawing.Point(36, 23);
-            this.adapters_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.adapters_label.Location = new System.Drawing.Point(48, 28);
+            this.adapters_label.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.adapters_label.Name = "adapters_label";
-            this.adapters_label.Size = new System.Drawing.Size(197, 25);
+            this.adapters_label.Size = new System.Drawing.Size(254, 32);
             this.adapters_label.TabIndex = 15;
             this.adapters_label.Text = "Adaptador de red";
             // 
@@ -106,10 +107,10 @@
             this.listView1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(17, 80);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Location = new System.Drawing.Point(23, 98);
+            this.listView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1306, 246);
+            this.listView1.Size = new System.Drawing.Size(1740, 302);
             this.listView1.TabIndex = 14;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -150,10 +151,10 @@
             this.start_button.BackColor = System.Drawing.Color.White;
             this.start_button.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.start_button.ForeColor = System.Drawing.Color.Black;
-            this.start_button.Location = new System.Drawing.Point(1059, 725);
-            this.start_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.start_button.Location = new System.Drawing.Point(1412, 892);
+            this.start_button.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.start_button.Name = "start_button";
-            this.start_button.Size = new System.Drawing.Size(190, 53);
+            this.start_button.Size = new System.Drawing.Size(253, 65);
             this.start_button.TabIndex = 13;
             this.start_button.Text = "Iniciar";
             this.start_button.UseVisualStyleBackColor = false;
@@ -163,10 +164,10 @@
             // 
             this.adapters_list.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adapters_list.FormattingEnabled = true;
-            this.adapters_list.Location = new System.Drawing.Point(241, 26);
-            this.adapters_list.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.adapters_list.Location = new System.Drawing.Point(321, 32);
+            this.adapters_list.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.adapters_list.Name = "adapters_list";
-            this.adapters_list.Size = new System.Drawing.Size(561, 28);
+            this.adapters_list.Size = new System.Drawing.Size(747, 30);
             this.adapters_list.TabIndex = 12;
             // 
             // stop_button
@@ -176,9 +177,10 @@
             this.stop_button.Enabled = false;
             this.stop_button.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stop_button.ForeColor = System.Drawing.Color.Black;
-            this.stop_button.Location = new System.Drawing.Point(1059, 801);
+            this.stop_button.Location = new System.Drawing.Point(1412, 986);
+            this.stop_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.stop_button.Name = "stop_button";
-            this.stop_button.Size = new System.Drawing.Size(190, 53);
+            this.stop_button.Size = new System.Drawing.Size(253, 65);
             this.stop_button.TabIndex = 23;
             this.stop_button.Text = "Detener";
             this.stop_button.UseVisualStyleBackColor = false;
@@ -203,10 +205,10 @@
             this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(13, 405);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.treeView1.Location = new System.Drawing.Point(17, 498);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(504, 580);
+            this.treeView1.Size = new System.Drawing.Size(671, 713);
             this.treeView1.TabIndex = 24;
             // 
             // button1
@@ -215,13 +217,14 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(1059, 642);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(1412, 790);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 53);
+            this.button1.Size = new System.Drawing.Size(253, 65);
             this.button1.TabIndex = 25;
             this.button1.Text = "Leer archivo";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -229,9 +232,10 @@
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(1059, 881);
+            this.button2.Location = new System.Drawing.Point(1412, 1084);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 53);
+            this.button2.Size = new System.Drawing.Size(253, 65);
             this.button2.TabIndex = 26;
             this.button2.Text = "Salir";
             this.button2.UseVisualStyleBackColor = false;
@@ -239,11 +243,11 @@
             // 
             // GUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1332, 996);
+            this.ClientSize = new System.Drawing.Size(1776, 1051);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.treeView1);
@@ -256,9 +260,11 @@
             this.Controls.Add(this.adapters_list);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NETSPOT";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

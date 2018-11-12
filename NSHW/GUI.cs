@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
 using PcapDotNet.Analysis;
 using PcapDotNet.Core;
 using PcapDotNet.Packets;
@@ -394,6 +395,69 @@ namespace NSHW
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string filename = "";
+
+            OpenFileDialog SerialFileDialog = new OpenFileDialog();
+            SerialFileDialog.Title = "Select Serial traffic file";
+            SerialFileDialog.Filter = "TXT files|*.txt";
+            SerialFileDialog.RestoreDirectory = false;
+
+            if (SerialFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                filename = SerialFileDialog.FileName;
+
+            }
+
+            //call wireshark text2pcap to convert the txt file
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.CreateNoWindow = true;
+            startInfo.UseShellExecute = false;
+            startInfo.FileName = "C:\\Program Files\\Wireshark\\text2pcap.exe";
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //add " around new file name, in case file name has space and will cause text2pcap execute wrong
+            startInfo.Arguments = " \"" + filename + "\"" + " " + "\"" + @"input\input.pcap" + "\"";
+
+            try
+            {
+                // Start the process with the info we specified.
+                // Call WaitForExit and then the using statement will close.
+                using (Process exeProcess = Process.Start(startInfo))
+                {
+                    exeProcess.WaitForExit();
+                }
+            }
+            catch
+            {
+                // Log error.
+            }
+
+            // Create the offline device
+            OfflinePacketDevice selectedDevice = new OfflinePacketDevice(@"input\input.pcap");
+
+            // Open the capture file
+            using (PacketCommunicator communicator =
+                selectedDevice.Open(65536,                                  // portion of the packet to capture
+                                                                            // 65536 guarantees that the whole packet will be captured on all the link layers
+                                    PacketDeviceOpenAttributes.Promiscuous, // promiscuous mode
+                                    1000))                                  // read timeout
+            {
+                // Read and dispatch packets until EOF is reached
+                communicator.ReceivePackets(0, PacketHandler);
+
+                ListViewItem item = new ListViewItem(time);
+                item.SubItems.Add(source);
+                item.SubItems.Add(destination);
+                item.SubItems.Add(protocol);
+                paquetes.Insert(0, paqueter);
+
+                item.SubItems.Add(length);
+                listView1.Items.Insert(0, item);
+            }
+
         }
     }
 }
