@@ -36,8 +36,6 @@ namespace NSHW
         {
             InitializeComponent();
 
-            this.Height = 800;
-
             try
             {
                 AdaptersList = LivePacketDevice.AllLocalMachine;

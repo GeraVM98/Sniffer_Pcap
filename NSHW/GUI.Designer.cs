@@ -74,7 +74,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(12, 453);
+            this.label2.Location = new System.Drawing.Point(18, 391);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(302, 28);
@@ -110,7 +110,7 @@
             this.listView1.Location = new System.Drawing.Point(23, 98);
             this.listView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1740, 302);
+            this.listView1.Size = new System.Drawing.Size(1740, 278);
             this.listView1.TabIndex = 14;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -151,7 +151,7 @@
             this.start_button.BackColor = System.Drawing.Color.White;
             this.start_button.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.start_button.ForeColor = System.Drawing.Color.Black;
-            this.start_button.Location = new System.Drawing.Point(1412, 892);
+            this.start_button.Location = new System.Drawing.Point(1399, 711);
             this.start_button.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.start_button.Name = "start_button";
             this.start_button.Size = new System.Drawing.Size(253, 65);
@@ -177,7 +177,7 @@
             this.stop_button.Enabled = false;
             this.stop_button.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stop_button.ForeColor = System.Drawing.Color.Black;
-            this.stop_button.Location = new System.Drawing.Point(1412, 986);
+            this.stop_button.Location = new System.Drawing.Point(1399, 805);
             this.stop_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.stop_button.Name = "stop_button";
             this.stop_button.Size = new System.Drawing.Size(253, 65);
@@ -205,10 +205,10 @@
             this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(17, 498);
+            this.treeView1.Location = new System.Drawing.Point(23, 432);
             this.treeView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(671, 713);
+            this.treeView1.Size = new System.Drawing.Size(671, 608);
             this.treeView1.TabIndex = 24;
             // 
             // button1
@@ -217,7 +217,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(1412, 790);
+            this.button1.Location = new System.Drawing.Point(1399, 609);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(253, 65);
@@ -232,7 +232,7 @@
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(1412, 1084);
+            this.button2.Location = new System.Drawing.Point(1399, 903);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(253, 65);
