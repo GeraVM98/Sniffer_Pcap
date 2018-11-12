@@ -279,7 +279,7 @@ namespace NSHW
             {
                 using (PacketCommunicator communicator = selectedAdapter.Open(65536, PacketDeviceOpenAttributes.Promiscuous, 1000))
                 {
-                    using (PacketDumpFile dumpFile = communicator.OpenDump(fullpath + "file.pcap"))
+                    using (PacketDumpFile dumpFile = communicator.OpenDump(fullpath + "Paquetes.pcap"))
                     {
                         communicator.ReceivePackets(0, dumpFile.Dump);
                     }
@@ -305,18 +305,18 @@ namespace NSHW
                 IpV4Fragmentation flags = ip.Fragmentation;
                 if (flags.Options.ToString().Equals("MoreFragments"))
                 {
-                    df = "0";
-                    mf = "1";
+                    df = "True";
+                    mf = "True";
                 }
                 if (flags.Options.ToString().Equals("None"))
                 {
-                    df = "0";
-                    mf = "0";
+                    df = "True";
+                    mf = "False";
                 }
                 if (flags.Options.ToString().Equals("DoNotFragment"))
                 {
-                    df = "1";
-                    mf = "0";
+                    df = "False";
+                    mf = "False";
                 }
 
                 treeView1.Nodes.Clear();
@@ -330,16 +330,16 @@ namespace NSHW
                 TreeNode node2 = new TreeNode("IP");
                 node2.ForeColor = Color.Green;
                 node2.Nodes.Add("Version: " + ip.Version.ToString());
-                node2.Nodes.Add("Longitud de la cabecera: " + ip.HeaderLength.ToString());
+                node2.Nodes.Add("Longitud de la cabecera: " + ip.HeaderLength.ToString() + " Bytes");
                 node2.Nodes.Add("Tipo de servicio: " + ip.TypeOfService.ToString());
-                node2.Nodes.Add("Longitud total: " + ip.Length.ToString());
+                node2.Nodes.Add("Longitud del paquete: " + ip.Length.ToString() + " Bytes");
                 node2.Nodes.Add("Identificacion: " + ip.Identification.ToString());
                 node2.Nodes.Add("Fragmentado: " + df);
                 node2.Nodes.Add("Mas fragmentos: " + mf);
                 node2.Nodes.Add("Desplazamiento del fragmento: " + flags.Offset.ToString());
                 node2.Nodes.Add("Tiempo de vida: " + ip.Ttl.ToString());
                 node2.Nodes.Add("Protocolo: " + ip.Protocol.ToString());
-                node2.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksum), 16)+ ":  [ " + ip.IsHeaderChecksumCorrect.ToString() + " ] ");
+                node2.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksum), 16)+ "  [ " + ip.IsHeaderChecksumCorrect.ToString() + " ] ");
                 node2.Nodes.Add("Ip origen: " + ip.Source.ToString());
                 node2.Nodes.Add("Ip destino: " + ip.Destination.ToString());
 
@@ -356,15 +356,19 @@ namespace NSHW
                     node3.Nodes.Add("Numero de secuencia: " + tcp.SequenceNumber.ToString());
                     node3.Nodes.Add("Siguiente numero de secuencia: " + tcp.NextSequenceNumber.ToString());
                     node3.Nodes.Add("Numero de confirmacion: " + tcp.AcknowledgmentNumber.ToString());
-                    node3.Nodes.Add("Longitud de la cabecera: " + tcp.HeaderLength.ToString());
-                    node3.Nodes.Add("URG: " + tcp.IsUrgent.ToString());
-                    node3.Nodes.Add("ACK: " + tcp.IsAcknowledgment.ToString());
-                    node3.Nodes.Add("PSH: " + tcp.IsPush.ToString());
-                    node3.Nodes.Add("RST: " + tcp.IsReset.ToString());
-                    node3.Nodes.Add("SYN: " + tcp.IsSynchronize.ToString());
-                    node3.Nodes.Add("FIN: " + tcp.IsFin.ToString());
+                    node3.Nodes.Add("Longitud de la cabecera: " + tcp.HeaderLength.ToString() + " Bytes");
+                    node3.Nodes.Add("000. .... ....  : Reservado");
+                    node3.Nodes.Add("...X .... ....  : NONCE " + tcp.IsNonceSum.ToString());
+                    node3.Nodes.Add(".... X... ....  : CWR " + tcp.IsCongestionWindowReduced.ToString());
+                    node3.Nodes.Add(".... .X.. ....  : ECN " + tcp.IsExplicitCongestionNotificationEcho.ToString());
+                    node3.Nodes.Add(".... ..X. ....  : URG " + tcp.IsUrgent.ToString());
+                    node3.Nodes.Add(".... ...X ....  : ACK " + tcp.IsAcknowledgment.ToString());
+                    node3.Nodes.Add(".... .... X...  : PSH " + tcp.IsPush.ToString());
+                    node3.Nodes.Add(".... .... .X..  : RST " + tcp.IsReset.ToString());
+                    node3.Nodes.Add(".... .... ..X.  : SYN " + tcp.IsSynchronize.ToString());
+                    node3.Nodes.Add(".... .... ...X  : FIN " + tcp.IsFin.ToString());
                     node3.Nodes.Add("Tamaño de ventana: " + tcp.Window.ToString());
-                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumtcp), 16) + ":  [] ");
+                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumtcp), 16) + "  [] ");
                     node3.Nodes.Add("Puntero urgente: " + tcp.UrgentPointer.ToString());
 
                     node2.Nodes.Add(node3);
@@ -379,7 +383,7 @@ namespace NSHW
                     node3.Nodes.Add("Puerto de Origen: " + udp.SourcePort.ToString());
                     node3.Nodes.Add("Puerto de Destino: " + udp.DestinationPort.ToString());
                     node3.Nodes.Add("Longitud de la cabecera: " + udp.TotalLength.ToString());
-                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumudp), 16) + ":  [] ");
+                    node3.Nodes.Add("Checksum 0x" + Convert.ToString(Convert.ToInt64(checksumudp), 16) + "  [] ");
 
                     node2.Nodes.Add(node3);
                 }
@@ -397,63 +401,70 @@ namespace NSHW
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string filename = "";
 
-            OpenFileDialog SerialFileDialog = new OpenFileDialog();
-            SerialFileDialog.Title = "Select Serial traffic file";
-            SerialFileDialog.Filter = "TXT files|*.txt";
-            SerialFileDialog.RestoreDirectory = false;
-
-            if (SerialFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                filename = SerialFileDialog.FileName;
-
+            if (!first_time){
+                Application.Restart();
             }
 
-            //call wireshark text2pcap to convert the txt file
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.CreateNoWindow = true;
-            startInfo.UseShellExecute = false;
-            startInfo.FileName = "C:\\Program Files\\Wireshark\\text2pcap.exe";
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            //add " around new file name, in case file name has space and will cause text2pcap execute wrong
-            startInfo.Arguments = " \"" + filename + "\"" + " " + "\"" + @"input\input.pcap" + "\"";
+            else{
+                string filename = "";
 
-            try
-            {
-                // Start the process with the info we specified.
-                // Call WaitForExit and then the using statement will close.
-                using (Process exeProcess = Process.Start(startInfo))
+                OpenFileDialog SerialFileDialog = new OpenFileDialog();
+                SerialFileDialog.Title = "Select Serial traffic file";
+                SerialFileDialog.Filter = "TXT files|*.txt";
+                SerialFileDialog.RestoreDirectory = false;
+
+                if (SerialFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    exeProcess.WaitForExit();
+                    filename = SerialFileDialog.FileName;
+
                 }
-            }
-            catch
-            {
-                // Log error.
-            }
 
-            // Create the offline device
-            OfflinePacketDevice selectedDevice = new OfflinePacketDevice(@"input\input.pcap");
+                //call wireshark text2pcap to convert the txt file
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.CreateNoWindow = true;
+                startInfo.UseShellExecute = false;
+                startInfo.FileName = "C:\\Program Files\\Wireshark\\text2pcap.exe";
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                //add " around new file name, in case file name has space and will cause text2pcap execute wrong
+                startInfo.Arguments = " \"" + filename + "\"" + " " + "\"" + @"input\input.pcap" + "\"";
 
-            // Open the capture file
-            using (PacketCommunicator communicator =
-                selectedDevice.Open(65536,                                  // portion of the packet to capture
-                                                                            // 65536 guarantees that the whole packet will be captured on all the link layers
-                                    PacketDeviceOpenAttributes.Promiscuous, // promiscuous mode
-                                    1000))                                  // read timeout
-            {
-                // Read and dispatch packets until EOF is reached
-                communicator.ReceivePackets(0, PacketHandler);
+                try
+                {
+                    // Start the process with the info we specified.
+                    // Call WaitForExit and then the using statement will close.
+                    using (Process exeProcess = Process.Start(startInfo))
+                    {
+                        exeProcess.WaitForExit();
+                    }
+                }
+                catch
+                {
+                    // Log error.
+                }
 
-                ListViewItem item = new ListViewItem(time);
-                item.SubItems.Add(source);
-                item.SubItems.Add(destination);
-                item.SubItems.Add(protocol);
-                paquetes.Insert(0, paqueter);
+                // Create the offline device
+                OfflinePacketDevice selectedDevice = new OfflinePacketDevice(@"input\input.pcap");
 
-                item.SubItems.Add(length);
-                listView1.Items.Insert(0, item);
+                // Open the capture file
+                using (PacketCommunicator communicator =
+                    selectedDevice.Open(65536,                                  // portion of the packet to capture
+                                                                                // 65536 guarantees that the whole packet will be captured on all the link layers
+                                        PacketDeviceOpenAttributes.Promiscuous, // promiscuous mode
+                                        1000))                                  // read timeout
+                {
+                    // Read and dispatch packets until EOF is reached
+                    communicator.ReceivePackets(0, PacketHandler);
+
+                    ListViewItem item = new ListViewItem(time);
+                    item.SubItems.Add(source);
+                    item.SubItems.Add(destination);
+                    item.SubItems.Add(protocol);
+                    paquetes.Insert(0, paqueter);
+
+                    item.SubItems.Add(length);
+                    listView1.Items.Insert(0, item);
+                }
             }
 
         }
