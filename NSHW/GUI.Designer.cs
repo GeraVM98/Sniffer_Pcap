@@ -50,58 +50,64 @@
             // 
             // save
             // 
+            this.save.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.save.AutoSize = true;
             this.save.BackColor = System.Drawing.Color.Transparent;
-            this.save.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.save.Location = new System.Drawing.Point(429, 92);
-            this.save.Margin = new System.Windows.Forms.Padding(4);
+            this.save.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save.ForeColor = System.Drawing.Color.Black;
+            this.save.Location = new System.Drawing.Point(1007, 19);
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(169, 27);
+            this.save.Size = new System.Drawing.Size(202, 32);
             this.save.TabIndex = 22;
             this.save.Text = "Guardar Datos";
             this.save.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(48, 414);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(9, 368);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(274, 24);
+            this.label2.Size = new System.Drawing.Size(240, 23);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Informacion del Paquete :";
+            this.label2.Text = "Información del paquete";
             // 
             // adapters_label
             // 
             this.adapters_label.AutoSize = true;
             this.adapters_label.BackColor = System.Drawing.Color.Transparent;
-            this.adapters_label.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.adapters_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.adapters_label.Location = new System.Drawing.Point(47, 34);
-            this.adapters_label.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.adapters_label.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adapters_label.ForeColor = System.Drawing.Color.Black;
+            this.adapters_label.Location = new System.Drawing.Point(36, 23);
+            this.adapters_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.adapters_label.Name = "adapters_label";
-            this.adapters_label.Size = new System.Drawing.Size(349, 24);
+            this.adapters_label.Size = new System.Drawing.Size(197, 25);
             this.adapters_label.TabIndex = 15;
-            this.adapters_label.Text = "Seleccione su Adaptador de Red :";
+            this.adapters_label.Text = "Adaptador de red";
             // 
             // listView1
             // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.listView1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(51, 140);
-            this.listView1.Margin = new System.Windows.Forms.Padding(5);
+            this.listView1.Location = new System.Drawing.Point(17, 80);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(991, 257);
+            this.listView1.Size = new System.Drawing.Size(1306, 246);
             this.listView1.TabIndex = 14;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -109,65 +115,68 @@
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Time";
-            this.columnHeader2.Width = 182;
+            this.columnHeader2.Text = "Hora";
+            this.columnHeader2.Width = 207;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Source";
+            this.columnHeader3.Text = "IP Origen";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 142;
+            this.columnHeader3.Width = 254;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Destination";
+            this.columnHeader4.Text = "IP Destino";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 142;
+            this.columnHeader4.Width = 283;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Protocol";
+            this.columnHeader5.Text = "Protocolo";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader5.Width = 150;
+            this.columnHeader5.Width = 257;
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Length";
+            this.columnHeader6.Text = "Longitud (bytes)";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader6.Width = 115;
+            this.columnHeader6.Width = 283;
             // 
             // start_button
             // 
-            this.start_button.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.start_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.start_button.Location = new System.Drawing.Point(719, 556);
-            this.start_button.Margin = new System.Windows.Forms.Padding(5);
+            this.start_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.start_button.BackColor = System.Drawing.Color.White;
+            this.start_button.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_button.ForeColor = System.Drawing.Color.Black;
+            this.start_button.Location = new System.Drawing.Point(1064, 916);
+            this.start_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.start_button.Name = "start_button";
-            this.start_button.Size = new System.Drawing.Size(253, 39);
+            this.start_button.Size = new System.Drawing.Size(190, 53);
             this.start_button.TabIndex = 13;
             this.start_button.Text = "Iniciar";
-            this.start_button.UseVisualStyleBackColor = true;
+            this.start_button.UseVisualStyleBackColor = false;
             this.start_button.Click += new System.EventHandler(this.start_button_Click);
             // 
             // adapters_list
             // 
+            this.adapters_list.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adapters_list.FormattingEnabled = true;
-            this.adapters_list.Location = new System.Drawing.Point(429, 37);
-            this.adapters_list.Margin = new System.Windows.Forms.Padding(5);
+            this.adapters_list.Location = new System.Drawing.Point(241, 26);
+            this.adapters_list.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.adapters_list.Name = "adapters_list";
-            this.adapters_list.Size = new System.Drawing.Size(453, 24);
+            this.adapters_list.Size = new System.Drawing.Size(561, 28);
             this.adapters_list.TabIndex = 12;
             // 
             // stop_button
             // 
-            this.stop_button.BackColor = System.Drawing.Color.Transparent;
+            this.stop_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.stop_button.BackColor = System.Drawing.Color.White;
             this.stop_button.Enabled = false;
-            this.stop_button.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.stop_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.stop_button.Location = new System.Drawing.Point(719, 737);
-            this.stop_button.Margin = new System.Windows.Forms.Padding(4);
+            this.stop_button.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_button.ForeColor = System.Drawing.Color.Black;
+            this.stop_button.Location = new System.Drawing.Point(1064, 992);
             this.stop_button.Name = "stop_button";
-            this.stop_button.Size = new System.Drawing.Size(253, 39);
+            this.stop_button.Size = new System.Drawing.Size(190, 53);
             this.stop_button.TabIndex = 23;
             this.stop_button.Text = "Detener";
             this.stop_button.UseVisualStyleBackColor = false;
@@ -189,16 +198,21 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(52, 451);
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeView1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.Location = new System.Drawing.Point(13, 405);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(523, 454);
+            this.treeView1.Size = new System.Drawing.Size(504, 641);
             this.treeView1.TabIndex = 24;
             // 
             // GUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 955);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1332, 1057);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.stop_button);
             this.Controls.Add(this.save);
@@ -209,7 +223,6 @@
             this.Controls.Add(this.adapters_list);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sniffer";
