@@ -23,7 +23,7 @@ namespace NSHW
 
         private  IList<LivePacketDevice> AdaptersList;
         private PacketDevice selectedAdapter;
-        private bool first_time = true; //boolean variable needed on re-capturing
+        private bool first_time = true;
         public static byte[] payload;
         public static Dictionary<int, Packet1> packets = new Dictionary<int, Packet1>();
         public List<Packet> paquetes = new List<Packet>();
@@ -39,25 +39,25 @@ namespace NSHW
 
             try
             {
-                AdaptersList = LivePacketDevice.AllLocalMachine;//locate all adapters
+                AdaptersList = LivePacketDevice.AllLocalMachine;
             }
             catch(Exception e)
             {
-                MessageBox.Show("Please make sure to run as Adminstrator and install Winpcap");
+                MessageBox.Show("Ejecutar como administrador e instalar winpcap");
             }
 
-            PcapDotNetAnalysis.OptIn = true;//enable pcap analysis
+            PcapDotNetAnalysis.OptIn = true;
 
             if (AdaptersList.Count == 0)
             {
 
-                MessageBox.Show("No adapters found !!");
+                MessageBox.Show("No se encontraron adaptadores");
 
                 return;
 
             }
 
-            for (int i = 0; i != AdaptersList.Count; ++i)//add all adapters to my Combobox
+            for (int i = 0; i != AdaptersList.Count; ++i)
             {
                 LivePacketDevice Adapter = AdaptersList[i];
 
@@ -65,7 +65,7 @@ namespace NSHW
 
                     adapters_list.Items.Add(Adapter.Description);
                 else
-                    adapters_list.Items.Add("Unknown");
+                    adapters_list.Items.Add("Desconocido");
             }
 
         }
@@ -75,28 +75,26 @@ namespace NSHW
         {
 
 
-            if (!first_time)//we need to re-capturing so we need to restart the program
+            if (!first_time)
             {
                 Application.Restart();
             }
 
-            else if (adapters_list.SelectedIndex >= 0)//if an adapter selected
+            else if (adapters_list.SelectedIndex >= 0)
             {
-                timer1.Enabled = true;//start updating listview and textbox to show info
-                selectedAdapter = AdaptersList[adapters_list.SelectedIndex];//get selected adapter from combobox
-                backgroundWorker1.RunWorkerAsync();//start capturing and making filters
-                backgroundWorker2.RunWorkerAsync();//start saving .pcap file if needed
+                timer1.Enabled = true;
+                selectedAdapter = AdaptersList[adapters_list.SelectedIndex];
+                backgroundWorker1.RunWorkerAsync();
+                backgroundWorker2.RunWorkerAsync();
                 start_button.Enabled = false;
                 stop_button.Enabled = true;
                 adapters_list.Enabled = false;
-                /*_tcp.Enabled = false;
-                _udp.Enabled = false;*/
                 first_time = false;
                 save.Enabled = false;
             }
             else
             {
-                MessageBox.Show("Please select an adapter!");
+                MessageBox.Show("Seleccionar un adaptador");
             }
         }
 
@@ -106,45 +104,25 @@ namespace NSHW
             start_button.Enabled = true;
             stop_button.Enabled = false;
             adapters_list.Enabled = true;
-            /*_tcp.Enabled = true;
-            _udp.Enabled = true;*/
             timer1.Enabled = false;
             start_button.Text = "Recapturar";
             save.Enabled = true;
 
         }
 
-        //variabels needed to get info from packet
+
         string count = "";
         string time = "";
         string source = "";
         string destination = "";
         string protocol = "";
         string length = "";
-        /*string tcpack = "";
-        string tcpsec = "";
-        string tcpnsec = "";
-        string tcpsrc = "";
-        string tcpdes = "";
-        string udpscr = "";
-        string udpdes = "";
-        string httpheader = "";
-        string httpver = "";
-        string httplen = "";
-        string reqres = "";*/
-        //variables needed when saving files
-        /*string folderName = "";
-        string pathString = "";
-        string type;*/
 
 
         private void PacketHandler(Packet packet)
         {
             this.count = ""; this.time = ""; this.source = ""; this.destination = ""; this.protocol = ""; this.length = "";
 
-            /*this.tcpack = ""; this.tcpsec = ""; this.tcpnsec = ""; this.tcpsrc = ""; this.tcpdes = ""; this.udpscr = "";
-
-            this.udpdes = ""; this.httpheader = ""; this.httpver = ""; this.httplen = ""; this.reqres = "";*/
 
             paqueter = packet;
 
@@ -176,17 +154,6 @@ namespace NSHW
                     length = eth.Length.ToString();
                     protocol = ip.Protocol.ToString();
                 }
-                else
-                {
-
-                    /*count = packet.Count.ToString();
-                    time = packet.Timestamp.ToString();
-                    this.source = ip.Source.ToString();
-                    this.destination = ip.Destination.ToString();
-                    length = ip.Length.ToString();
-                    protocol = ip.Protocol.ToString();*/
-
-                }
             }
 
             if (ip.Protocol.ToString().Equals("Tcp")&&(save.Checked))
@@ -194,11 +161,11 @@ namespace NSHW
                 int _source = tcp.SourcePort;
                 int _destination = tcp.DestinationPort;
 
-                if (tcp.PayloadLength != 0) //not syn or ack
+                if (tcp.PayloadLength != 0) 
                 {
                     payload = new byte[tcp.PayloadLength];
-                    tcp.Payload.ToMemoryStream().Read(payload, 0, tcp.PayloadLength);// read payload from 0 to length
-                    if (_destination == 80)// request from server
+                    tcp.Payload.ToMemoryStream().Read(payload, 0, tcp.PayloadLength);
+                    if (_destination == 80)
                     {
                         Packet1 packet1 = new Packet1();
                         int i = Array.IndexOf(payload, (byte)32, 6);
@@ -275,54 +242,9 @@ namespace NSHW
                 item.SubItems.Add(destination);
                 item.SubItems.Add(protocol);
                 paquetes.Insert(0,paqueter);
-
-                /*if (protocol.Equals("Tcp"))
-                {
-                    if (save.Checked)
-                    {
-                        using (StreamWriter writer = new StreamWriter(fullpath + "TcpPacketsInfo.txt", true))
-                        {
-                            writer.Write("Protocol :  Tcp  \r\n SourcePort :  " + tcpsrc + "\r\n DestinationPort :  " + tcpdes + "\r\n SequenceNumber :  " + tcpsec + "\r\n NextSequenceNuber :  " + tcpnsec + "\r\n AcknowladgmentNumber :  " + tcpack + "\r\n --------------------------------------------- \r\n");
-                        }
-                    }
-                    
-                }
-                else
-                {
-                    if (protocol.Equals("Http"))
-                    {
-                        if (save.Checked)
-                        {
-                            using (StreamWriter writer = new StreamWriter(fullpath + "HttpPacketsInfo.txt", true))
-                            {
-                                writer.Write("Protocol :  Http  \r\n Version :  " + httpver + "\r\n Length :  " + httplen + "\r\n Type :  " + reqres + "\r\n Header :  \r\n" + httpheader + "\r\n --------------------------------------------- \r\n");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (protocol.Equals("Udp"))
-                        {
-
-                            if (save.Checked)
-                            {
-                                using (StreamWriter writer = new StreamWriter(fullpath + "UdpPacketsInfo.txt", true))
-                                {
-                                    writer.Write("Protocol :  Udp  \r\n SourcePort :  " + udpscr + "\r\n DestinationPort :  " + udpdes + "\r\n --------------------------------------------- \r\n");
-                                }
-                            }
-                        }
-                    }
-                }*/
-
                 item.SubItems.Add(length);
                 listView1.Items.Insert(0, item);
             }
-
-
-
-
-
         }
 
 
@@ -331,21 +253,18 @@ namespace NSHW
 
             using (PacketCommunicator communicator = selectedAdapter.Open(65536, PacketDeviceOpenAttributes.Promiscuous, 1000))
             {
-                // Check the link layer.
                 if (communicator.DataLink.Kind != DataLinkKind.Ethernet)
                 {
-                    MessageBox.Show("This program works only on Ethernet networks!");
+                    MessageBox.Show("Este programa solo funciona con redes Ethernet");
 
                     return;
                 }
 
                 using (BerkeleyPacketFilter filter = communicator.CreateFilter("tcp or udp"))
                 {
-                    // Set the filter
                     communicator.SetFilter(filter);
                 }
 
-                // Begin the capture
                 communicator.ReceivePackets(0, PacketHandler);
                 
 
@@ -361,7 +280,6 @@ namespace NSHW
                 {
                     using (PacketDumpFile dumpFile = communicator.OpenDump(fullpath + "file.pcap"))
                     {
-                        // start the capture
                         communicator.ReceivePackets(0, dumpFile.Dump);
                     }
                 }
@@ -470,6 +388,11 @@ namespace NSHW
                 treeView1.ExpandAll();
 
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

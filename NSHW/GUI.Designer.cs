@@ -46,6 +46,8 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // save
@@ -148,7 +150,7 @@
             this.start_button.BackColor = System.Drawing.Color.White;
             this.start_button.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.start_button.ForeColor = System.Drawing.Color.Black;
-            this.start_button.Location = new System.Drawing.Point(1064, 916);
+            this.start_button.Location = new System.Drawing.Point(1059, 786);
             this.start_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.start_button.Name = "start_button";
             this.start_button.Size = new System.Drawing.Size(190, 53);
@@ -174,7 +176,7 @@
             this.stop_button.Enabled = false;
             this.stop_button.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stop_button.ForeColor = System.Drawing.Color.Black;
-            this.stop_button.Location = new System.Drawing.Point(1064, 992);
+            this.stop_button.Location = new System.Drawing.Point(1059, 862);
             this.stop_button.Name = "stop_button";
             this.stop_button.Size = new System.Drawing.Size(190, 53);
             this.stop_button.TabIndex = 23;
@@ -207,12 +209,42 @@
             this.treeView1.Size = new System.Drawing.Size(504, 641);
             this.treeView1.TabIndex = 24;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(1059, 703);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(190, 53);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Leer archivo";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(1059, 942);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(190, 53);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Salir";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1332, 1057);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.stop_button);
             this.Controls.Add(this.save);
@@ -225,7 +257,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sniffer";
+            this.Text = "NETSPOT";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,6 +281,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
