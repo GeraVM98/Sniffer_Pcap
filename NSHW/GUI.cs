@@ -412,6 +412,9 @@ namespace NSHW
         private void button1_Click(object sender, EventArgs e)
         {
 
+            string inputpath = Path.Combine(Application.StartupPath, @"input\");
+            //MessageBox.Show(inputpath);
+
             if (!first_time){
                 Application.Restart();
             }
@@ -437,7 +440,7 @@ namespace NSHW
                 startInfo.FileName = "C:\\Program Files\\Wireshark\\text2pcap.exe";
                 startInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 //add " around new file name, in case file name has space and will cause text2pcap execute wrong
-                startInfo.Arguments = " \"" + filename + "\"" + " " + "\"" + @"input\input.pcap" + "\"";
+                startInfo.Arguments = " \"" + filename + "\"" + " " + "\"" + inputpath + "input.pcap" + "\"";
 
                 try
                 {
@@ -454,7 +457,7 @@ namespace NSHW
                 }
 
                 // Create the offline device
-                OfflinePacketDevice selectedDevice = new OfflinePacketDevice(@"input\input.pcap");
+                OfflinePacketDevice selectedDevice = new OfflinePacketDevice(inputpath + "input.pcap");
 
                 // Open the capture file
                 using (PacketCommunicator communicator =

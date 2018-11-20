@@ -1,0 +1,13 @@
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\bin\Release\NSHW.exe.config
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\bin\Release\NSHW.exe
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\bin\Release\NSHW.pdb
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\bin\Release\PcapDotNet.Analysis.dll
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\bin\Release\PcapDotNet.Base.dll
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\bin\Release\PcapDotNet.Core.dll
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\bin\Release\PcapDotNet.Packets.dll
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\obj\Release\NSHW.GUI.resources
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\obj\Release\NSHW.Properties.Resources.resources
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\obj\Release\NSHW.csproj.GenerateResource.Cache
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\obj\Release\NSHW.exe
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\obj\Release\NSHW.pdb
+C:\Users\USUARIO\Documents\Seminario Redes\Sniffer_Pcap\NSHW\obj\Release\NSHW.csprojResolveAssemblyReference.cache
