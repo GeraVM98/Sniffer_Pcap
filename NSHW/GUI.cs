@@ -358,13 +358,7 @@ namespace NSHW
                     node3.Nodes.Add("Siguiente numero de secuencia: " + tcp.NextSequenceNumber.ToString());
                     node3.Nodes.Add("Numero de confirmacion: " + tcp.AcknowledgmentNumber.ToString());
                     node3.Nodes.Add("Longitud de la cabecera: " + tcp.HeaderLength.ToString() + " Bytes");
-                    node3.Nodes.Add("000. .... ....  : Reservado");
-                    flag = tcp.IsNonceSum ? 1 : 0;
-                    node3.Nodes.Add("..." + flag.ToString() + " .... ....  : NONCE =" + tcp.IsNonceSum.ToString());
-                    flag = tcp.IsCongestionWindowReduced ? 1 : 0;
-                    node3.Nodes.Add(".... " + flag.ToString() + "... ....  : CWR =" + tcp.IsCongestionWindowReduced.ToString());
-                    flag = tcp.IsExplicitCongestionNotificationEcho ? 1 : 0;
-                    node3.Nodes.Add(".... ." + flag.ToString() + ".. ....  : ECN =" + tcp.IsExplicitCongestionNotificationEcho.ToString());
+                    node3.Nodes.Add("0000 00.. ....  : Reservado");
                     flag = tcp.IsUrgent ? 1 : 0;
                     node3.Nodes.Add(".... .." + flag.ToString() + ". ....  : URG =" + tcp.IsUrgent.ToString());
                     flag = tcp.IsAcknowledgment ? 1 : 0;
